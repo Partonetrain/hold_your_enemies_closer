@@ -1,0 +1,13 @@
+{
+  "enchantment.hold_your_enemies_closer.antiknockback": "Attraction",
+  "enchantment.hold_your_enemies_closer.antiknockback.desc": "Hit enemies will be knocked towards you",
+  "enchantment.hold_your_enemies_closer.antiknockback.description": "Hit enemies will be knocked towards you",
+
+  "enchantment.hold_your_enemies_closer.antipunch": "Pull",
+  "enchantment.hold_your_enemies_closer.antipunch.desc": "Hit enemies will be knocked towards you",
+  "enchantment.hold_your_enemies_closer.antipunch.description": "Hit enemies will be knocked towards you",
+
+  "enchantment.hold_your_enemies_closer.ice_aspect": "Ice Aspect",
+  "enchantment.hold_your_enemies_closer.ice_aspect.desc": "Hit enemies will be take freeze damage as if they were in Powdered Snow",
+  "enchantment.hold_your_enemies_closer.ice_aspect.description": "Hit enemies will be take freeze damage as if they were in Powdered Snow"
+}

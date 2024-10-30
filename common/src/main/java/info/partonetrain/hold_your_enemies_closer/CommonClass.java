@@ -1,9 +1,11 @@
 package info.partonetrain.hold_your_enemies_closer;
 
 import info.partonetrain.hold_your_enemies_closer.platform.Services;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 
 // This class is part of the common project meaning it is shared between all supported loaders. Code written here can only
 // import and access the vanilla codebase, libraries used by vanilla, and optionally third party libraries that provide
@@ -29,6 +31,7 @@ public class CommonClass {
             Constants.LOG.info("Hello to examplemod");
         }
 
-
+        Registry.register(BuiltInRegistries.ENCHANTMENT_ENTITY_EFFECT_TYPE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "freeze"), FreezeEnchantEntityEffect.CODEC);
+        //forge might not like this way
     }
 }

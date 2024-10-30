@@ -1,6 +1,6 @@
-package com.example.examplemod.platform;
+package info.partonetrain.hold_your_enemies_closer.platform;
 
-import com.example.examplemod.platform.services.IPlatformHelper;
+import info.partonetrain.hold_your_enemies_closer.platform.services.IPlatformHelper;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
 
