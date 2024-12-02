@@ -4,7 +4,9 @@
   "package": "info.partonetrain.hold_your_enemies_closer.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
-  "mixins": [],
+  "mixins": [
+    "MobMixin"
+  ],
   "client": [
     "MixinMinecraft"
   ],

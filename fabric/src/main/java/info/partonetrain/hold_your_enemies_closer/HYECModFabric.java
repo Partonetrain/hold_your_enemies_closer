@@ -1,6 +1,9 @@
 package info.partonetrain.hold_your_enemies_closer;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 
 public class HYECModFabric implements ModInitializer {
     
@@ -15,4 +18,6 @@ public class HYECModFabric implements ModInitializer {
         Constants.LOG.info("Hello Fabric world!");
         CommonClass.init();
     }
+
+
 }

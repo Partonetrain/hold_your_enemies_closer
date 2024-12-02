@@ -4,7 +4,6 @@ import info.partonetrain.hold_your_enemies_closer.platform.Services;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Items;
 
 // This class is part of the common project meaning it is shared between all supported loaders. Code written here can only
@@ -34,4 +33,6 @@ public class CommonClass {
         Registry.register(BuiltInRegistries.ENCHANTMENT_ENTITY_EFFECT_TYPE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "freeze"), FreezeEnchantEntityEffect.CODEC);
         //forge might not like this way
     }
+
+
 }
