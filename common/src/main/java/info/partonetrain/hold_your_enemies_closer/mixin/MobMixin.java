@@ -1,5 +1,6 @@
 package info.partonetrain.hold_your_enemies_closer.mixin;
 
+import info.partonetrain.hold_your_enemies_closer.platform.Services;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
@@ -17,15 +18,16 @@ import java.util.Optional;
 @Mixin(Mob.class)
 public class MobMixin {
     @Inject(method = "doHurtTarget", at= @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/entity/Mob;getKnockback(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;)F"))
-    public void hold_your_enemies_closer$backwardsKnockback(ServerLevel serverLevel, Entity entity, CallbackInfoReturnable<Boolean> cir){
+    public void hold_your_enemies_closer$mobDealsBackwardsKnockback(ServerLevel serverLevel, Entity entity, CallbackInfoReturnable<Boolean> cir){
         Mob self = (Mob)(Object)this;
         ItemStack itemstack = self.getWeaponItem();
         DamageSource damagesource = Optional.ofNullable(itemstack.getItem().getDamageSource(self)).orElse(self.damageSources().mobAttack(self));
 
-        float magnitude = self.getKnockback(entity, damagesource);
+        //float magnitude = self.getKnockback(entity, damagesource);
+        float magnitude = Services.PLATFORM.widenedGetKnockback(self, entity, damagesource);
         if (magnitude < 0.0F && entity instanceof LivingEntity livingentity) {
             livingentity.knockback(
-                    (double)(magnitude * -0.5F),
+                    (double)(magnitude * 0.5F),
                     (double) Mth.sin(self.getYRot() * (float) (Math.PI / 180.0)),
                     (double)(-Mth.cos(self.getYRot() * (float) (Math.PI / 180.0)))
             );

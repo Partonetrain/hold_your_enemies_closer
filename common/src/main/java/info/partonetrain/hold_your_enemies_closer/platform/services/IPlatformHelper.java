@@ -1,5 +1,9 @@
 package info.partonetrain.hold_your_enemies_closer.platform.services;
 
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+
 public interface IPlatformHelper {
 
     /**
@@ -33,4 +37,8 @@ public interface IPlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    //returns value of LivingEntity.getKnockback
+    //necessary because different platforms have different ways of widening access
+    float widenedGetKnockback(LivingEntity entity, Entity attacker, DamageSource damageSource);
 }
