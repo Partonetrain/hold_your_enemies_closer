@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values":[
+    "hold_your_enemies_closer:antiknockback",
+    "hold_your_enemies_closer:antipunch",
+    "hold_your_enemies_closer:ice_aspect"
+  ]
+}

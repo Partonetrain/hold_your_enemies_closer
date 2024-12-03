@@ -1,0 +1,35 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.hold_your_enemies_closer.swift_swim"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 0.15,
+          "per_level_above_first": 0.15
+        },
+        "attribute": "hold_your_enemies_closer:swim_speed",
+        "id": "hold_your_enemies_closer:enchantment.swift_swim",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 75,
+    "per_level_above_first": 25
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 25,
+    "per_level_above_first": 25
+  },
+  "slots": [
+    "legs"
+  ],
+  "supported_items": "#minecraft:enchantable/leg_armor",
+  "exclusive_set": "#hold_your_enemies_closer:exclusive_set/swift_leggings",
+  "weight": 1
+}

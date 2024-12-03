@@ -1,32 +1,20 @@
-# MultiLoader Template
+## Hold Your Enemies Closer
+This mod adds several "opposite" enchantments.
+The goal is to add a bit more variation to enchanting, and to experiment with the 1.21+ enchantment rework. All enchantments can be customized via datapack.
 
-This project provides a Gradle project template that can compile Minecraft mods for multiple modloaders using a common project for the sources. This project does not require any third party libraries or dependencies. If you have any questions or want to discuss the project, please join our [Discord](https://discord.myceliummod.network).
+--todo, try native smelts_loot pick enchant, swift swim loot injection, ice protection prevents freezing and lets you walk on powder snow, 
 
-## Getting Started
+The mod contains the following enchantments:
 
-### IntelliJ IDEA
-This guide will show how to import the MultiLoader Template into IntelliJ IDEA. The setup process is roughly equivalent to setting up the modloaders independently and should be very familiar to anyone who has worked with their MDKs.
+| Enchantment      | Treasure? | Description                                                                                                                                                                                                     | Max Level | Mutually exclusive with |
+|------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------------|
+| Attraction       | No        | Goes on swords. Applies reverse knockback to hit entities, pulling them towards the attacker. The mod is named after this one.                                                                                  | 2         | Knockback               |
+| Pull             | No        | Goes on bows. Applies reverse knockback to entities hit by the arrow, pulling them in the direction opposite of the arrow's velocity. Should work with crossbows if a datapack is used to make them compatible. | 2         | Punch                   |
+| Ice Aspect       | No        | Goes on swords. Adds freezing ticks (just like Powdered Snow) to hit entities.                                                                                                                                  | 2         | Fire Aspect             |
+| Swift Swim       | ?         | Goes on leggings. Increases the speed at which you move in liquids. Uses a custom attribute on Fabric.                                                                                                          | 3         | Swift Sneak             |
+| Curse of Frailty | Yes       | Goes on any item with durability. Increases durability used by 1 each level.                                                                                                                                    | 3         | Unbreaking              |
 
-1. Clone or download this repository to your computer.
-2. Configure the project by setting the properties in the `gradle.properties` file. You will also need to change the `rootProject.name`  property in `settings.gradle`, this should match the folder name of your project, or else IDEA may complain.
-3. Open the template's root folder as a new project in IDEA. This is the folder that contains this README.md file and the gradlew executable.
-4. If your default JVM/JDK is not Java 21 you will encounter an error when opening the project. This error is fixed by going to `File > Settings > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM` and changing the value to a valid Java 21 JVM. You will also need to set the Project SDK to Java 21. This can be done by going to `File > Project Structure > Project SDK`. Once both have been set open the Gradle tab in IDEA and click the refresh button to reload the project.
-5. Open your Run/Debug Configurations. Under the `Application` category there should now be options to run Fabric and NeoForge projects. Select one of the client options and try to run it.
-6. Assuming you were able to run the game in step 5 your workspace should now be set up.
+# Notes
+By necessity, this mod makes it possible for living entities to receive "negative knockback". As far as I know there aren't any situations in the vanilla (or modded for that matter) game where this happens outside my enchantments, but there *are* checks in the vanilla code to ensure positive values. This means there could be unintended side effects, but it's unlikely.
 
-### Eclipse
-While it is possible to use this template in Eclipse it is not recommended. During the development of this template multiple critical bugs and quirks related to Eclipse were found at nearly every level of the required build tools. While we continue to work with these tools to report and resolve issues support for projects like these are not there yet. For now Eclipse is considered unsupported by this project. The development cycle for build tools is notoriously slow so there are no ETAs available.
-
-## Development Guide
-When using this template the majority of your mod should be developed in the `common` project. The `common` project is compiled against the vanilla game and is used to hold code that is shared between the different loader-specific versions of your mod. The `common` project has no knowledge or access to ModLoader specific code, apis, or concepts. Code that requires something from a specific loader must be done through the project that is specific to that loader, such as the `fabric` or `neoforge` projects.
-
-Loader specific projects such as the `fabric` and `neoforge` project are used to load the `common` project into the game. These projects also define code that is specific to that loader. Loader specific projects can access all the code in the `common` project. It is important to remember that the `common` project can not access code from loader specific projects.
-
-## Removing Platforms and Loaders
-While this template has support for many modloaders, new loaders may appear in the future, and existing loaders may become less relevant.
-
-Removing loader specific projects is as easy as deleting the folder, and removing the `include("projectname")` line from the `settings.gradle` file.
-For example if you wanted to remove support for `forge` you would follow the following steps:
-
-1. Delete the subproject folder. For example, delete `MultiLoader-Template/forge`.
-2. Remove the project from `settings.gradle`. For example, remove `include("forge")`. 
+There is a forge project in the repo, but it is currently unused and does nothing, I left it in case I want to make a Forge release

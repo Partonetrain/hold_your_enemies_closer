@@ -1,0 +1,41 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.hold_your_enemies_closer.frailty_curse"
+  },
+  "effects": {
+    "minecraft:item_damage": [
+      {
+        "effect": {
+          "type": "minecraft:add",
+          "value": {
+            "type": "minecraft:linear",
+            "base": 1,
+            "per_level_above_first": 1
+          }
+        },
+        "requirements": {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "items": "#minecraft:enchantable/durability"
+          }
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 0
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 25,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "any"
+  ],
+  "supported_items": "#minecraft:enchantable/durability",
+  "exclusive_set": "#hold_your_enemies_closer:exclusive_set/durability",
+  "weight": 5
+}

@@ -1,0 +1,50 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.hold_your_enemies_closer.auto_smelt"
+  },
+  "effects": {
+    "minecraft:post_attack": [
+      {
+        "affected": "victim",
+        "effect": {
+          "type": "minecraft:ignite",
+          "duration": {
+            "type": "minecraft:linear",
+            "base": 1.0
+          }
+        },
+        "enchanted": "attacker",
+        "requirements": {
+          "condition": "minecraft:damage_source_properties",
+          "predicate": {
+            "is_direct": true
+          }
+        }
+      }
+    ],
+    "minecraft:block_experience": [
+      {
+        "effect": {
+          "type": "minecraft:set",
+          "value": 0.0
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 65,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 0
+  },
+  "primary_items": "#minecraft:enchantable/mining",
+  "exclusive_set": "#minecraft:exclusive_set/mining",
+  "slots": [
+    "mainhand"
+  ],
+  "weight": 1
+}
