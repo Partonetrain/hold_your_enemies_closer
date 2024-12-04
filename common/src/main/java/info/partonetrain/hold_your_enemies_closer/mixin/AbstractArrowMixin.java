@@ -1,5 +1,6 @@
 package info.partonetrain.hold_your_enemies_closer.mixin;
 
+import info.partonetrain.hold_your_enemies_closer.IFrostArrow;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,12 +11,17 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AbstractArrow.class)
-public abstract class AbstractArrowMixin {
+public abstract class AbstractArrowMixin implements IFrostArrow {
+
+    @Unique
+    public int hold_your_enemies_closer$freezeTicks = 0;
+
     @Shadow public abstract ItemStack getWeaponItem();
 
     @Inject(method = "doKnockback", at=@At(value = "HEAD"), cancellable = true)
@@ -34,5 +40,18 @@ public abstract class AbstractArrowMixin {
             }
         }
         ci.cancel();
+    }
+
+
+
+    @Unique
+    @Override
+    public void hold_your_enemies_closer$setFreezeTicks(int freezeTicks){
+        this.hold_your_enemies_closer$freezeTicks = freezeTicks;
+    }
+
+    @Inject(method = "doPostHurtEffects", at = @At("HEAD"))
+    public void hold_your_enemies_closer$addFrozenTicks(LivingEntity target, CallbackInfo ci){
+        target.setTicksFrozen(target.getTicksFrozen() + hold_your_enemies_closer$freezeTicks);
     }
 }

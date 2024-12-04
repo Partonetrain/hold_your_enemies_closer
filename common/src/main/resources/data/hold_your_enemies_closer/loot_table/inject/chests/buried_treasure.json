@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "weight": 8,
+          "quality": 1,
+          "functions": [
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "hold_your_enemies_closer:swift_swim"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 2,
+          "quality": -1
+        }
+      ]
+    }
+  ]
+}

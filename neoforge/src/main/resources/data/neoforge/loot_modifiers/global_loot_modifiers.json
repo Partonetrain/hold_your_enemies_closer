@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "entries": [
+    "hold_your_enemies_closer:inject/chests/bastion_treasure",
+    "hold_your_enemies_closer:inject/chests/buried_treasure",
+    "hold_your_enemies_closer:inject/chests/shipwreck_treasure"
+  ]
+}

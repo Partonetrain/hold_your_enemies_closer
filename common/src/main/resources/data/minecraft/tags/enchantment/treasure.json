@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values":[
-    "hold_your_enemies_closer:frailty_curse"
+    "hold_your_enemies_closer:auto_smelt",
+    "hold_your_enemies_closer:frailty_curse",
+    "hold_your_enemies_closer:swift_swim"
   ]
 }

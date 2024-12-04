@@ -1,38 +1,75 @@
 package info.partonetrain.hold_your_enemies_closer;
 
 import info.partonetrain.hold_your_enemies_closer.platform.Services;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.EnchantmentTags;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.block.state.BlockState;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.jetbrains.annotations.Nullable;
 
-// This class is part of the common project meaning it is shared between all supported loaders. Code written here can only
-// import and access the vanilla codebase, libraries used by vanilla, and optionally third party libraries that provide
-// common compatible binaries. This means common code can not directly use loader specific concepts such as Forge events
-// however it will be compatible with all supported mod loaders.
+import java.util.Optional;
+import java.util.function.Consumer;
+
 public class CommonClass {
 
-    // The loader specific projects are able to import and use any code from the common project. This allows you to
-    // write the majority of your code here and load it from your loader specific projects. This example has some
-    // code that gets invoked by the entry point of the loader specific projects.
     public static void init() {
 
-        Constants.LOG.info("Hello from Common init on {}! we are currently in a {} environment!", Services.PLATFORM.getPlatformName(), Services.PLATFORM.getEnvironmentName());
-        Constants.LOG.info("The ID for diamonds is {}", BuiltInRegistries.ITEM.getKey(Items.DIAMOND));
-
-        // It is common for all supported loaders to provide a similar feature that can not be used directly in the
-        // common code. A popular way to get around this is using Java's built-in service loader feature to create
-        // your own abstraction layer. You can learn more about this in our provided services class. In this example
-        // we have an interface in the common code and use a loader specific implementation to delegate our call to
-        // the platform specific approach.
-        if (Services.PLATFORM.isModLoaded("examplemod")) {
-
-            Constants.LOG.info("Hello to examplemod");
-        }
-
-        Registry.register(BuiltInRegistries.ENCHANTMENT_ENTITY_EFFECT_TYPE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "freeze"), FreezeEnchantEntityEffect.CODEC);
-        //forge might not like this way
     }
 
+    public static AutosmeltOutcome autoSmelt(ItemStack original, ItemStack tool, @Nullable Entity entity, @Nullable BlockState state) {
+        MutableInt xp = new MutableInt(0);
+        boolean hasEnchant = EnchantmentHelper.hasTag(tool, EnchantmentTags.SMELTS_LOOT);
+
+        if (entity instanceof LivingEntity livingEntity
+                && livingEntity.level() instanceof ServerLevel sl
+                && hasEnchant
+                && state != null)
+        {
+            Optional<RecipeHolder<SmeltingRecipe>> recipe = sl.recipeAccess()
+                    .getRecipeFor(RecipeType.SMELTING, new SingleRecipeInput(original), livingEntity.level());
+            if (recipe.isPresent()) {
+                ItemStack smeltingResult = Services.PLATFORM.getSmeltRecipeResult(recipe);
+                if (!smeltingResult.isEmpty()) {
+                    int xpToReward = 0;
+                    float xpFromRecipe = recipe.get().value().experience();
+                    //recipes like smelting Iron Ore "drop" 0.7xp when smelted in a furnace.
+                    //since in this case there would be a 70% chance to drop 1 xp
+                    //there should be a chance that it drops 1 point when autosmelted, too.
+                    if(xpFromRecipe < 1.0F){
+                        float chance = livingEntity.getRandom().nextFloat();
+                        if(chance < xpFromRecipe){
+                            xpToReward = 1;
+                        }
+                    }
+                    else{
+                        xpToReward = (int) xpFromRecipe;
+                    }
+                    //technically this means that any recipe that drops more than 1 xp just gets rounded
+                    //down, but... meh. Consider it a balance thing.
+
+                    xp.setValue(xpToReward);
+                    ItemStack newStack = smeltingResult.copyWithCount(smeltingResult.getCount() * original.getCount());
+                    return new AutosmeltOutcome(newStack, xp);
+                }
+            }
+
+        }
+        return new AutosmeltOutcome(original, new MutableInt(0));
+    }
 
 }

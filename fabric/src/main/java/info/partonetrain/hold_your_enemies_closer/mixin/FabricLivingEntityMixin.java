@@ -1,18 +1,13 @@
 package info.partonetrain.hold_your_enemies_closer.mixin;
 
 import info.partonetrain.hold_your_enemies_closer.HYECModFabric;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
@@ -24,6 +19,7 @@ public class FabricLivingEntityMixin {
         cir.getReturnValue().add(HYECModFabric.SWIM_SPEED);
     }
 
+    //make swim speed attribute work
     @ModifyArg(method = "travelInFluid", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;moveRelative(FLnet/minecraft/world/phys/Vec3;)V"), index = 0)
     private float hold_your_enemies_closer$implSwimSpeedAttribute(float original){
         LivingEntity self = (LivingEntity)(Object)(this);

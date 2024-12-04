@@ -8,11 +8,11 @@
         "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/FabricMC/fabric-example-mod"
+        "homepage": "https://github.com/Partonetrain/hold_your_enemies_closer",
+        "sources": "https://github.com/Partonetrain/hold_your_enemies_closer"
     },
     "license": "${license}",
-    "icon": "${mod_id}.png",
+    "icon": "assets/hold_your_enemies_closer/icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [

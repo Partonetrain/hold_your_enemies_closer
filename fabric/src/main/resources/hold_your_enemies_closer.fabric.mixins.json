@@ -6,7 +6,8 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AttributesMixin",
-    "FabricLivingEntityMixin"
+    "FabricLivingEntityMixin",
+    "FabricLootTableMixin"
   ],
   "client": [
     "MixinTitleScreen"
