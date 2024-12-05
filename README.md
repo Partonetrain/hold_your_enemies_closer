@@ -1,4 +1,4 @@
-## Hold Your Enemies Closer
+# Hold Your Enemies Closer
 This mod adds several "opposite" enchantments that are mutually exclusive with vanilla enchantments.
 The goal is to add a bit more variation to enchanting, and to experiment with the 1.21+ enchantment rework. 
 As with vanilla enchantments, all enchantments from HYEC can be customized via datapack.
@@ -18,7 +18,7 @@ The mod contains the following enchantments:
 | Ice Aspect       | Enchanting table, loot, trading       | Goes on swords. Adds freezing ticks (just like Powder Snow) to hit entities. Stacks, unlike Fire Aspect. Mobs like Blazes take more damage from freezing (this is a vanilla feature).                           | 2         | Fire Aspect             |
 | Swift Swim       | Treasure (Shipwreck, Buried Treasure) | Goes on leggings. Increases the speed at which you move in liquids. Uses a custom attribute on Fabric, `neoforge:swim_speed` on Neoforge.                                                                       | 3         | Swift Sneak             |
 
-# Notes
+## Notes
 - By necessity, this mod makes it possible for living entities to receive "negative knockback". As far as I know there aren't any situations in the vanilla (or modded for that matter) game where this happens outside my enchantments, but there *are* checks in the vanilla code to ensure positive values. This means there could be unintended side effects, but it's unlikely.
 - The Auto-Smelt logic intentionally uses the vanilla `minecraft:smelts_loot` enchantment tag, making Fire Aspect also able to smelt block loot.
 - Frost Walker also now allows entities to walk on Powder Snow.
