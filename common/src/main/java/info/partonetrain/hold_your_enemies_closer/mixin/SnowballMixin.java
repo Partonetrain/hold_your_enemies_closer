@@ -16,6 +16,6 @@ public class SnowballMixin {
         if(f <= 500){
             result.getEntity().setTicksFrozen(Math.min(f + 20, 500));
         }
-        //Constants.LOG.info(String.valueOf((result.getEntity().getTicksFrozen())));
+        Constants.LOG.info(String.valueOf((result.getEntity().getTicksFrozen())));
     }
 }
