@@ -16,7 +16,8 @@ import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 public class HYECModFabric implements ModInitializer {
 
     public static Holder<Attribute> SWIM_SPEED;
-    
+    public static Holder<Attribute> FREEZING_TIME;
+
     @Override
     public void onInitialize() {
         CommonClass.init();

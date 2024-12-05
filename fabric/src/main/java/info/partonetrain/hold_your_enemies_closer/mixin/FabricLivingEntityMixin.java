@@ -13,10 +13,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public class FabricLivingEntityMixin {
 
-    //add swim speed attribute
+    //add custom attributes
     @Inject(method = "createLivingAttributes", at = @At("RETURN"))
     private static void hold_your_enemies_closer$addSwimSpeedAttribute(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.getReturnValue().add(HYECModFabric.SWIM_SPEED);
+        cir.getReturnValue().add(HYECModFabric.FREEZING_TIME);
     }
 
     //make swim speed attribute work

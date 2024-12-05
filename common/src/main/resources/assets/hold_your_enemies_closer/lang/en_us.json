@@ -5,30 +5,38 @@
   "enchantment.hold_your_enemies_closer.antiknockback.desc": "Hit enemies will be knocked towards you",
   "enchantment.hold_your_enemies_closer.antiknockback.description": "Hit enemies will be knocked towards you",
 
-  "enchantment.hold_your_enemies_closer.antipunch": "Pull",
-  "enchantment.hold_your_enemies_closer.antipunch.desc": "Hit enemies will be knocked in the opposite direction of the arrow's velocity",
-  "enchantment.hold_your_enemies_closer.antipunch.description": "Hit enemies will be knocked in the opposite direction of the arrow's velocity",
-
   "enchantment.hold_your_enemies_closer.auto_smelt": "Auto-Smelt",
   "enchantment.hold_your_enemies_closer.auto_smelt.desc": "Automatically smelts block drops",
   "enchantment.hold_your_enemies_closer.auto_smelt.description": "Automatically smelts block drops",
-
-
-  "enchantment.hold_your_enemies_closer.ice_aspect": "Ice Aspect",
-  "enchantment.hold_your_enemies_closer.ice_aspect.desc": "Hit enemies will be take freeze damage as if they were in Powdered Snow",
-  "enchantment.hold_your_enemies_closer.ice_aspect.description": "Hit enemies will be take freeze damage as if they were in Powdered Snow",
-
-  "enchantment.hold_your_enemies_closer.swift_swim": "Swift Swim",
-  "enchantment.hold_your_enemies_closer.swift_swim.desc": "Increases the speed at which you move in liquids",
-  "enchantment.hold_your_enemies_closer.swift_swim.description": "Increases the speed at which you move in liquids",
 
   "enchantment.hold_your_enemies_closer.frailty_curse": "Curse of Frailty",
   "enchantment.hold_your_enemies_closer.frailty_curse.desc": "Item takes more durability damage",
   "enchantment.hold_your_enemies_closer.frailty_curse.description": "Item takes more durability damage",
 
-  "_comment2": "This is only used on Fabric, NeoForge uses its native swim speed attribute instead",
+  "enchantment.hold_your_enemies_closer.frost": "Frost",
+  "enchantment.hold_your_enemies_closer.frost.desc": "Shot enemies will be take freeze damage as if they were in Powdered Snow",
+  "enchantment.hold_your_enemies_closer.frost.description": "Shot enemies will be take freeze damage as if they were in Powdered Snow",
+
+  "enchantment.hold_your_enemies_closer.ice_aspect": "Ice Aspect",
+  "enchantment.hold_your_enemies_closer.ice_aspect.desc": "Hit enemies will be take freeze damage as if they were in Powdered Snow",
+  "enchantment.hold_your_enemies_closer.ice_aspect.description": "Hit enemies will be take freeze damage as if they were in Powdered Snow",
+
+  "enchantment.hold_your_enemies_closer.antipunch": "Pull",
+  "enchantment.hold_your_enemies_closer.antipunch.desc": "Hit enemies will be knocked in the opposite direction of the arrow's velocity",
+  "enchantment.hold_your_enemies_closer.antipunch.description": "Hit enemies will be knocked in the opposite direction of the arrow's velocity",
+
+
+  "enchantment.hold_your_enemies_closer.swift_swim": "Swift Swim",
+  "enchantment.hold_your_enemies_closer.swift_swim.desc": "Increases the speed at which you move in liquids",
+  "enchantment.hold_your_enemies_closer.swift_swim.description": "Increases the speed at which you move in liquids",
+
+  "_comment2": "Swimming Speed attribute is only used on Fabric, NeoForge uses its native swim speed attribute instead",
   "attribute.name.hold_your_enemies_closer.swimming_speed": "Swift Swim",
   "attribute.name.hold_your_enemies_closer.swimming_speed.desc": "Additional swimming speed from the Swift Swim enchantment",
-  "attribute.name.hold_your_enemies_closer.swimming_speed.description": "Additional swimming speed from the Swift Swim enchantment"
+  "attribute.name.hold_your_enemies_closer.swimming_speed.description": "Additional swimming speed from the Swift Swim enchantment",
+
+  "attribute.name.hold_your_enemies_closer.freezing_time": "Freezing Time",
+  "attribute.name.hold_your_enemies_closer.freezing_time.desc": "Multiplier on reduction of freezing ticks",
+  "attribute.name.hold_your_enemies_closer.freezing_time.description": "Multiplier on reduction of freezing ticks"
 
 }

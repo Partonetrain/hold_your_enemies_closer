@@ -1,11 +1,13 @@
 package info.partonetrain.hold_your_enemies_closer.mixin;
 
-import net.minecraft.world.entity.LivingEntity;
+import info.partonetrain.hold_your_enemies_closer.CommonClass;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntity.class)
@@ -27,4 +29,30 @@ public class LivingEntityMixin {
             self.setDeltaMovement(vec3.x / 2.0 - vec31.x, self.onGround() ? Math.min(0.4, vec3.y / 2.0 + strength) : vec3.y, vec3.z / 2.0 - vec31.z);
         }
     }
+
+    @Inject(method = "aiStep()V", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;setTicksFrozen(I)V", ordinal = 1))
+    public void hold_your_enemies_closer$unfreezeFaster(CallbackInfo ci){
+        LivingEntity self = (LivingEntity)(Object)(this);
+        double freezingTime = self.getAttributeValue(CommonClass.freezingTimeHolder);
+        int ticksFrozen = self.getTicksFrozen();
+
+        if(ticksFrozen > 0 && freezingTime < 1){
+            ticksFrozen = (int) (ticksFrozen * freezingTime);
+            self.setTicksFrozen(ticksFrozen);
+        }
+    }
+
+    @ModifyArg(method = "aiStep()V", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;setTicksFrozen(I)V", ordinal = 1))
+    public int hold_your_enemies_closer$useNewFrozenTicks(int original){
+        LivingEntity self = (LivingEntity)(Object)(this);
+        double freezingTime = self.getAttributeValue(CommonClass.freezingTimeHolder);
+        if(freezingTime < 1){
+            return self.getTicksFrozen();
+        }
+        else{
+            return original;
+        }
+
+    }
+
 }

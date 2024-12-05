@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values":[
-    "hold_your_enemies_closer:ice_aspect"
+    "hold_your_enemies_closer:ice_aspect",
+    "hold_your_enemies_closer:frost"
   ]
 }

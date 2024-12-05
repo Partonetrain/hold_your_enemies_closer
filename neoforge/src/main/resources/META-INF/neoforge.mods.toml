@@ -11,7 +11,7 @@ displayName = "${mod_name}"
 logoFile="assets/hold_your_enemies_closer/icon.png"
 credits="${credits}"
 authors = "${mod_author}"
-description = '''${description}''' (Supports multiline text)
+description = '''${description}'''
 [[mixins]]
 config = "${mod_id}.mixins.json"
 [[mixins]]

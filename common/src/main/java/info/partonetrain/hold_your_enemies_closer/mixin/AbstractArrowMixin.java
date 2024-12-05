@@ -1,5 +1,6 @@
 package info.partonetrain.hold_your_enemies_closer.mixin;
 
+import info.partonetrain.hold_your_enemies_closer.Constants;
 import info.partonetrain.hold_your_enemies_closer.IFrostArrow;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
@@ -42,8 +43,6 @@ public abstract class AbstractArrowMixin implements IFrostArrow {
         ci.cancel();
     }
 
-
-
     @Unique
     @Override
     public void hold_your_enemies_closer$setFreezeTicks(int freezeTicks){
@@ -52,6 +51,8 @@ public abstract class AbstractArrowMixin implements IFrostArrow {
 
     @Inject(method = "doPostHurtEffects", at = @At("HEAD"))
     public void hold_your_enemies_closer$addFrozenTicks(LivingEntity target, CallbackInfo ci){
-        target.setTicksFrozen(target.getTicksFrozen() + hold_your_enemies_closer$freezeTicks);
+        if(hold_your_enemies_closer$freezeTicks > 0){
+            target.setTicksFrozen(target.getTicksFrozen() + hold_your_enemies_closer$freezeTicks);
+        }
     }
 }

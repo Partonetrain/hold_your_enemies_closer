@@ -8,7 +8,7 @@
       {
         "effect": {
           "type": "hold_your_enemies_closer:freeze",
-          "duration": 100.0
+          "duration": 5.0
         }
       }
     ]

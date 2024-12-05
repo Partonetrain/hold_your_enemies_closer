@@ -9,7 +9,9 @@
     "BlockLootSubProviderMixin",
     "LivingEntityMixin",
     "MobMixin",
-    "PlayerMixin"
+    "PlayerMixin",
+    "PowderedSnowBlockMixin",
+    "SnowballMixin"
   ],
   "client": [
     "MixinMinecraft"

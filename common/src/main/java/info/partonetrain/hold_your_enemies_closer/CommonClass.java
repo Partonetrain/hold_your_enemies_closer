@@ -10,6 +10,7 @@ import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -26,6 +27,8 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class CommonClass {
+
+    public static Holder<Attribute> freezingTimeHolder;
 
     public static void init() {
 
