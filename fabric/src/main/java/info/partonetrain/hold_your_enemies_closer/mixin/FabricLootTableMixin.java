@@ -18,15 +18,15 @@ import org.spongepowered.asm.mixin.injection.At;
 public class FabricLootTableMixin {
     @ModifyReturnValue(method = "getRandomItems(Lnet/minecraft/world/level/storage/loot/LootContext;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;", at = @At("RETURN"))
     public ObjectArrayList<ItemStack> hold_your_enemies_closer$modifyBlockDrops(ObjectArrayList<ItemStack> original, LootContext context) {
-        if (context.hasParameter(LootContextParams.TOOL) && context.hasParameter(LootContextParams.BLOCK_STATE) && context.hasParameter(LootContextParams.ORIGIN)) {
-            Vec3 origin = context.getParameter(LootContextParams.ORIGIN);
+        if (context.hasParam(LootContextParams.TOOL) && context.hasParam(LootContextParams.BLOCK_STATE) && context.hasParam(LootContextParams.ORIGIN)) {
+            Vec3 origin = context.getParam(LootContextParams.ORIGIN);
             MutableInt xp = new MutableInt(0);
             ObjectArrayList<ItemStack> result = new ObjectArrayList<>(original.size());
             for (ItemStack stack : original) {
                 AutosmeltOutcome outcome = CommonClass.autoSmelt(stack,
-                                context.getParameter(LootContextParams.TOOL),
-                                context.getParameter(LootContextParams.THIS_ENTITY),
-                                context.getParameter(LootContextParams.BLOCK_STATE));
+                                context.getParam(LootContextParams.TOOL),
+                                context.getParam(LootContextParams.THIS_ENTITY),
+                                context.getParam(LootContextParams.BLOCK_STATE));
                 result.add(outcome.stack);
                 xp.setValue(outcome.xp);
             }

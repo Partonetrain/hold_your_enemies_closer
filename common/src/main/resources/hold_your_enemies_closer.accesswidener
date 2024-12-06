@@ -2,3 +2,5 @@ accessWidener v2 named
 accessible method net/minecraft/world/entity/LivingEntity getKnockback (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;)F
 accessible field net/minecraft/data/loot/BlockLootSubProvider registries Lnet/minecraft/core/HolderLookup$Provider;
 accessible field net/minecraft/world/item/crafting/SingleItemRecipe result Lnet/minecraft/world/item/ItemStack;
+accessible field net/minecraft/world/item/crafting/AbstractCookingRecipe experience F
+accessible field net/minecraft/world/item/crafting/AbstractCookingRecipe result Lnet/minecraft/world/item/ItemStack;

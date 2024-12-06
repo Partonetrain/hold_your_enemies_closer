@@ -17,7 +17,7 @@ public class PlayerMixin {
     @Inject(method = "attack", at= @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/entity/player/Player;getKnockback(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;)F"))
     public void hold_your_enemies_closer$plareDealsBackwardsKnockback(Entity target, CallbackInfo ci){
         Player self = (Player)(Object)this;
-        DamageSource damagesource = Optional.ofNullable(self.getWeaponItem().getItem().getDamageSource(self)).orElse(self.damageSources().playerAttack(self));
+        DamageSource damagesource = self.damageSources().playerAttack(self);
         boolean applySprintingBonus = self.isSprinting() && (self.getAttackStrengthScale(0.5F) > 0.9F);
         float kb = self.getKnockback(target, damagesource) + (applySprintingBonus ? 1.0F : 0.0F);
         if (kb < 0.0F) {

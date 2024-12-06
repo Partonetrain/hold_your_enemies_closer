@@ -18,10 +18,10 @@ import java.util.Optional;
 @Mixin(Mob.class)
 public class MobMixin {
     @Inject(method = "doHurtTarget", at= @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/entity/Mob;getKnockback(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;)F"))
-    public void hold_your_enemies_closer$mobDealsBackwardsKnockback(ServerLevel serverLevel, Entity entity, CallbackInfoReturnable<Boolean> cir){
+    public void hold_your_enemies_closer$mobDealsBackwardsKnockback(Entity entity, CallbackInfoReturnable<Boolean> cir){
         Mob self = (Mob)(Object)this;
         ItemStack itemstack = self.getWeaponItem();
-        DamageSource damagesource = Optional.ofNullable(itemstack.getItem().getDamageSource(self)).orElse(self.damageSources().mobAttack(self));
+        DamageSource damagesource = self.damageSources().mobAttack(self);
 
         //float magnitude = self.getKnockback(entity, damagesource);
         float magnitude = Services.PLATFORM.widenedGetKnockback(self, entity, damagesource);
