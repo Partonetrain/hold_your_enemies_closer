@@ -1,5 +1,6 @@
 package info.partonetrain.hold_your_enemies_closer.mixin;
 
+import info.partonetrain.hold_your_enemies_closer.compat.CombatNouveauCompatHandler;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -36,10 +37,11 @@ public class PlayerMixin {
             }
 
             self.setDeltaMovement(self.getDeltaMovement().multiply(0.6, 1.0, 0.6));
-            //NOTE: combat-nouveau has a config option that disable vanilla sprint stop after hit.
-            //In future, check if combat-nouveau is installed and check its config
+            //combat-nouveau has a config option that disable vanilla sprint stop after hit.
             //https://github.com/Fuzss/combatnouveau/blob/main/1.21.1/Common/src/main/java/fuzs/combatnouveau/mixin/PlayerMixin.java#L61-L68
-            self.setSprinting(false);
+            if(CombatNouveauCompatHandler.attackingStopsSprinting){
+                self.setSprinting(false);
+            }
 
         }
     }

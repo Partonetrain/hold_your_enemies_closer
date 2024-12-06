@@ -1,5 +1,6 @@
 package info.partonetrain.hold_your_enemies_closer;
 
+import info.partonetrain.hold_your_enemies_closer.compat.CombatNouveauCompatHandler;
 import info.partonetrain.hold_your_enemies_closer.platform.Services;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
@@ -24,7 +25,9 @@ public class CommonClass {
     public static Holder<Attribute> freezingTimeHolder;
 
     public static void init() {
-
+        if(Services.PLATFORM.isModLoaded("combatnouveau")){
+            CombatNouveauCompatHandler.checkConfig();
+        }
     }
 
     public static AutosmeltOutcome autoSmelt(ItemStack original, ItemStack tool, @Nullable Entity entity, @Nullable BlockState state) {
