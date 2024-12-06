@@ -16,7 +16,7 @@ import java.util.Optional;
 @Mixin(Player.class)
 public class PlayerMixin {
     @Inject(method = "attack", at= @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/entity/player/Player;getKnockback(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;)F"))
-    public void hold_your_enemies_closer$plareDealsBackwardsKnockback(Entity target, CallbackInfo ci){
+    public void hold_your_enemies_closer$playerDealsBackwardsKnockback(Entity target, CallbackInfo ci){
         Player self = (Player)(Object)this;
         DamageSource damagesource = self.damageSources().playerAttack(self);
         boolean applySprintingBonus = self.isSprinting() && (self.getAttackStrengthScale(0.5F) > 0.9F);

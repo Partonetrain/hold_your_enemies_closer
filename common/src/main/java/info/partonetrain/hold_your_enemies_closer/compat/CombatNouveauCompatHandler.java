@@ -16,7 +16,7 @@ public final class CombatNouveauCompatHandler {
         Path configFilePath = Paths.get(configFileLoc); //converts to correct path regardless of platform
         try {
             String allLines = Files.readAllLines(configFilePath).toString();
-            if (allLines.contains("critical_hits_while_sprinting = true")) {
+            if (allLines.contains("sprint_attacks = true")) {
                 attackingStopsSprinting = false;
             }
         } catch (IOException e) {
