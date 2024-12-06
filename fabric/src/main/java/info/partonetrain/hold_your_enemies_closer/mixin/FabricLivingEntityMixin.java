@@ -21,7 +21,7 @@ public class FabricLivingEntityMixin {
     }
 
     //make swim speed attribute work
-    @ModifyArg(method = "travelInFluid", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;moveRelative(FLnet/minecraft/world/phys/Vec3;)V"), index = 0)
+    @ModifyArg(method = "travel", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;moveRelative(FLnet/minecraft/world/phys/Vec3;)V"), index = 0)
     private float hold_your_enemies_closer$implSwimSpeedAttribute(float original){
         LivingEntity self = (LivingEntity)(Object)(this);
         double modifier = 1.0F;
