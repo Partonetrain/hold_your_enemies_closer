@@ -26,7 +26,7 @@ public record FreezeEnchantEntityEffect(LevelBasedValue duration) implements Enc
     //the duration in JSON is of seconds; duration in ticks is multiplied by 20
     public void apply(@NotNull ServerLevel level, int enchantmentLevel, @NotNull EnchantedItemInUse item, @NotNull Entity entity, @NotNull Vec3 origin) {
         int durationAdded = (int) (this.duration.calculate(enchantmentLevel) * level.tickRateManager().tickrate());
-        if(entity instanceof LivingEntity le){
+        if(entity instanceof LivingEntity le && le.canFreeze()){
             le.setTicksFrozen(le.getTicksFrozen() + durationAdded);
             //Constants.LOG.info(String.valueOf(le.getTicksFrozen()));
         }
