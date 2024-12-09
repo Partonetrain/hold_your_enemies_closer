@@ -51,7 +51,7 @@ public abstract class AbstractArrowMixin implements IFrostArrow {
 
     @Inject(method = "doPostHurtEffects", at = @At("HEAD"))
     public void hold_your_enemies_closer$addFrozenTicks(LivingEntity target, CallbackInfo ci){
-        if(hold_your_enemies_closer$freezeTicks > 0){
+        if(hold_your_enemies_closer$freezeTicks > 0  && target.canFreeze()){
             target.setTicksFrozen(target.getTicksFrozen() + hold_your_enemies_closer$freezeTicks);
         }
     }

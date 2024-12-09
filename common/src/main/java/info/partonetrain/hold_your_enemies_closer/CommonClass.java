@@ -1,5 +1,6 @@
 package info.partonetrain.hold_your_enemies_closer;
 
+import info.partonetrain.hold_your_enemies_closer.compat.CombatNouveauCompatHandler;
 import info.partonetrain.hold_your_enemies_closer.platform.Services;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
@@ -24,7 +25,9 @@ public class CommonClass {
     public static Holder<Attribute> freezingTimeHolder;
 
     public static void init() {
-
+        if(Services.PLATFORM.isModLoaded("combatnouveau")){
+            CombatNouveauCompatHandler.checkConfig();
+        }
     }
 
     public static AutosmeltOutcome autoSmelt(ItemStack original, ItemStack tool, @Nullable Entity entity, @Nullable BlockState state) {
@@ -36,13 +39,13 @@ public class CommonClass {
                 && hasEnchant
                 && state != null)
         {
-            Optional<RecipeHolder<SmeltingRecipe>> recipe = sl.recipeAccess()
+            Optional<RecipeHolder<SmeltingRecipe>> recipe = sl.getRecipeManager()
                     .getRecipeFor(RecipeType.SMELTING, new SingleRecipeInput(original), livingEntity.level());
             if (recipe.isPresent()) {
                 ItemStack smeltingResult = Services.PLATFORM.getSmeltRecipeResult(recipe);
                 if (!smeltingResult.isEmpty()) {
                     int xpToReward = 0;
-                    float xpFromRecipe = recipe.get().value().experience();
+                    float xpFromRecipe = recipe.get().value().getExperience();
                     //recipes like smelting Iron Ore "drop" 0.7xp when smelted in a furnace.
                     //since in this case there would be a 70% chance to drop 1 xp
                     //there should be a chance that it drops 1 point when autosmelted, too.
