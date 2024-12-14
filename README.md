@@ -3,8 +3,6 @@ This mod adds several "opposite" enchantments that are mutually exclusive with v
 The goal is to add a bit more variation to enchanting, and to experiment with the 1.21+ enchantment rework. 
 As with vanilla enchantments, all enchantments from HYEC can be customized via datapack.
 
-As a "bonus feature", Snowballs inflict a small amount of freeze.
-
 The mod contains the following enchantments:
 
 | Enchantment      | Obtainable by                         | Description                                                                                                                                                                                                     | Max Level | Mutually exclusive with |

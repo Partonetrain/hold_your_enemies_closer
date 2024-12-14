@@ -20,10 +20,10 @@ public class Constants {
 	public static final String MOD_NAME = "Hold Your Enemies Closer";
 	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
-	public static final Attribute FREEZING_TIME = new RangedAttribute("attribute.name.hold_your_enemies_closer.freezing_time", 1.0, 0.0, 1024.0).setSyncable(true);
+	public static final Attribute FREEZING_TIME = new RangedAttribute("attribute.name.hold_your_enemies_closer.freezing_time", 1.0, 0.0, 1024.0).setSyncable(true).setSentiment(Attribute.Sentiment.NEGATIVE);
 
 	public static final ResourceKey<Enchantment> AUTO_SMELT = ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MOD_ID, "auto_smelt"));
-	public static final TagKey<Enchantment> ALLOWS_POWDERED_SNOW_WALKING = TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MOD_ID, "allows_powdered_snow_walking"));
+	public static final TagKey<Enchantment> ALLOWS_POWDER_SNOW_WALKING = TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MOD_ID, "allows_powder_snow_walking"));
 
 	public static List<ResourceKey<LootTable>> InjectedLootTables = List.of(
 			BuiltInLootTables.SHIPWRECK_TREASURE,
