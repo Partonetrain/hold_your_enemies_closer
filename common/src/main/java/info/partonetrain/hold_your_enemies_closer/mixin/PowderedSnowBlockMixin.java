@@ -26,7 +26,7 @@ public class PowderedSnowBlockMixin {
 
             //if not, check if any item has enchantment that is tagged
             for(ItemStack stack : le.getArmorSlots()){
-                if(EnchantmentHelper.hasTag(stack, Constants.ALLOWS_POWDERED_SNOW_WALKING)){
+                if(EnchantmentHelper.hasTag(stack, Constants.ALLOWS_POWDER_SNOW_WALKING)){
                     cir.setReturnValue(true);
                     cir.cancel();
                 }

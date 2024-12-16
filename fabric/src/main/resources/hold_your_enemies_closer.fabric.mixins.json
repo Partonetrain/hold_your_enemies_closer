@@ -10,7 +10,6 @@
     "FabricLootTableMixin"
   ],
   "client": [
-    "MixinTitleScreen"
   ],
   "server": [],
   "injectors": {

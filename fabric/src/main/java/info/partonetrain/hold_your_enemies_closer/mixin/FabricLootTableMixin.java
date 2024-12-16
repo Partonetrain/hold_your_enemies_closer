@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public class FabricLootTableMixin {
     @ModifyReturnValue(method = "getRandomItems(Lnet/minecraft/world/level/storage/loot/LootContext;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;", at = @At("RETURN"))
     public ObjectArrayList<ItemStack> hold_your_enemies_closer$modifyBlockDrops(ObjectArrayList<ItemStack> original, LootContext context) {
-        if (context.hasParameter(LootContextParams.TOOL) && context.hasParameter(LootContextParams.BLOCK_STATE) && context.hasParameter(LootContextParams.ORIGIN)) {
+        if (context.hasParameter(LootContextParams.TOOL) && context.hasParameter(LootContextParams.BLOCK_STATE) && context.hasParameter(LootContextParams.ORIGIN) && context.hasParameter(LootContextParams.THIS_ENTITY)) {
             Vec3 origin = context.getParameter(LootContextParams.ORIGIN);
             MutableInt xp = new MutableInt(0);
             ObjectArrayList<ItemStack> result = new ObjectArrayList<>(original.size());
