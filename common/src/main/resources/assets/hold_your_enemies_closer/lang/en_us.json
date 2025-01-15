@@ -40,6 +40,13 @@
 
   "attribute.name.hold_your_enemies_closer.freezing_time": "Freezing Time",
   "attribute.name.hold_your_enemies_closer.freezing_time.desc": "Multiplier on reduction of freezing ticks",
-  "attribute.name.hold_your_enemies_closer.freezing_time.description": "Multiplier on reduction of freezing ticks"
+  "attribute.name.hold_your_enemies_closer.freezing_time.description": "Multiplier on reduction of freezing ticks",
 
+  "_comment3": "Optional datapack enchantments",
+  "enchantment.hyecunbound.fleetfeet": "Fleetfeet",
+  "enchantment.hyecunbound.fleetfeet.desc": "Increases movement speed",
+  "enchantment.hyecunbound.fleetfeet.description": "Increases movement speed",
+  "enchantment.hyecunbound.magic_protection": "Magic Protection",
+  "enchantment.hyecunbound.magic_protection.desc": "Protects you from magic damage",
+  "enchantment.hyecunbound.magic_protection.description": "Protects you from magic damage"
 }
